@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/beat-saber-modding-group/BSIPA-MetadataFileSchema/master/Schema.json",
   "id": "MoveScriptChanger",
   "name": "MoveScriptChanger",
-  "author": "",
+  "author": "Ceppy",
   "version": "1.0.0",
   "description": "",
   "gameVersion": "1.11.1",

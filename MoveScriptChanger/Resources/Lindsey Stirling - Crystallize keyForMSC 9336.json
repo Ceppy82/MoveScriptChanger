@@ -1,0 +1,108 @@
+{  "ActiveInPauseMenu": false,  "Movements": [
+ 
+ {   "StartPos": {    "x": 0,    "y": 1,    "z": 20   },   "StartRot": {    "x": 0,    "y": 180,    "z": 0   },   "EndPos": {    "x": 0,    "y": 1,    "z": 20   },   "EndRot": {    "x": 0,    "y": 180,    "z": 0   },   "Duration": 0,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 1,    "z": 20   },   "StartRot": {    "x": 0,    "y": 180,    "z": 0   },   "EndPos": {    "x": 0,    "y": 1,    "z": 20   },   "EndRot": {    "x": 0,    "y": 180,    "z": 0   },   "Duration": 0,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 1,    "z": 20   },   "StartRot": {    "x": 0,    "y": 180,    "z": 0   },   "EndPos": {    "x": 0,    "y": 4,    "z": 7   },   "EndRot": {    "x": 15,    "y": 180,    "z": 0   },   "Duration": 14,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 4,    "z": 7   },   "StartRot": {    "x": 15,    "y": 180,    "z": 0   },   "EndPos": {    "x": 5,    "y": 4,    "z": 3   },   "EndRot": {    "x": 15,    "y": 235,    "z": 0   },   "Duration": 14,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 5,    "y": 4,    "z": 3   },   "StartRot": {    "x": 15,    "y": 235,    "z": 0   },   "EndPos": {    "x": 5,    "y": 4,    "z": -5   },   "EndRot": {    "x": 15,    "y": 305,    "z": 0   },   "Duration": 14,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 5,    "y": 4,    "z": -5   },   "StartRot": {    "x": 15,    "y": 305,    "z": 0   },   "EndPos": {    "x": 0,    "y": 4,    "z": -6   },   "EndRot": {    "x": 10,    "y": 0,    "z": 0   },   "Duration": 20,   "Delay": 6,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 4,    "z": -6   },   "StartRot": {    "x": 10,    "y": 0,    "z": 0   },   "EndPos": {    "x": -2,    "y": 1,    "z": -4   },   "EndRot": {    "x": 0,    "y": 25,    "z": 0   },   "Duration": 2,   "Delay": 2,   "EaseTransition": true  },
+ {   "StartPos": {    "x": -2,    "y": 1,    "z": -4   },   "StartRot": {    "x": 0,    "y": 25,    "z": 0   },   "EndPos": {    "x": 3,    "y": 1,    "z": -4   },   "EndRot": {    "x": 0,    "y": 335,    "z": 0   },   "Duration": 2,   "Delay": 1,   "EaseTransition": true  },
+ {   "StartPos": {    "x": 3,    "y": 1,    "z": -4   },   "StartRot": {    "x": 0,    "y": 335,    "z": 0   },   "EndPos": {    "x": -3,    "y": 3,    "z": -4   },   "EndRot": {    "x": 7,    "y": 15,    "z": 0   },   "Duration": 2,   "Delay": 2,   "EaseTransition": true  },
+ {   "StartPos": {    "x": -3,    "y": 3,    "z": -4   },   "StartRot": {    "x": 7,    "y": 15,    "z": 0   },   "EndPos": {    "x": 2,    "y": 3,    "z": -4   },   "EndRot": {    "x": 7,    "y": 345,    "z": 0   },   "Duration": 3,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 2,    "y": 3,    "z": -4   },   "StartRot": {    "x": 7,    "y": 345,    "z": 0   },   "EndPos": {    "x": 0,    "y": 4,    "z": -6   },   "EndRot": {    "x": 10,    "y": 0,    "z": 180   },   "Duration": 7,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 4,    "z": -6   },   "StartRot": {    "x": 10,    "y": 0,    "z": 180   },   "EndPos": {    "x": -3,    "y": 3,    "z": -4   },   "EndRot": {    "x": 7,    "y": 15,    "z": 0   },   "Duration": 7,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": -3,    "y": 3,    "z": -4   },   "StartRot": {    "x": 7,    "y": 15,    "z": 0   },   "EndPos": {    "x": -6,    "y": 2,    "z": 2   },   "EndRot": {    "x": 7,    "y": 90,    "z": 0   },   "Duration": 9,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": -6,    "y": 2,    "z": 2   },   "StartRot": {    "x": 7,    "y": 90,    "z": 0   },   "EndPos": {    "x": 0,    "y": 3,    "z": 3   },   "EndRot": {    "x": 30,    "y": 180,    "z": 0   },   "Duration": 9,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 3,    "z": 3   },   "StartRot": {    "x": 30,    "y": 180,    "z": 0   },   "EndPos": {    "x": 6,    "y": 2,    "z": 2   },   "EndRot": {    "x": 7,    "y": 270,    "z": 0   },   "Duration": 9,   "Delay": 14,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 6,    "y": 2,    "z": 2   },   "StartRot": {    "x": 7,    "y": 270,    "z": 0   },   "EndPos": {    "x": 3,    "y": 1,    "z": -4   },   "EndRot": {    "x": 0,    "y": 335,    "z": 0   },   "Duration": 2,   "Delay": 12,   "EaseTransition": true  },
+ {   "StartPos": {    "x": 3,    "y": 1,    "z": -4   },   "StartRot": {    "x": 0,    "y": 335,    "z": 0   },   "EndPos": {    "x": 0,    "y": 4,    "z": -6   },   "EndRot": {    "x": 10,    "y": 0,    "z": 0   },   "Duration": 20,   "Delay": 14,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 4,    "z": -6   },   "StartRot": {    "x": 10,    "y": 0,    "z": 0   },   "EndPos": {    "x": 0,    "y": 7,    "z": 0   },   "EndRot": {    "x": 90,    "y": 0,    "z": 0   },   "Duration": 2,   "Delay": 2,   "EaseTransition": true  },
+ {   "StartPos": {    "x": 0,    "y": 7,    "z": 0   },   "StartRot": {    "x": 90,    "y": 0,    "z": 0   },   "EndPos": {    "x": 0,    "y": 7,    "z": 0   },   "EndRot": {    "x": 90,    "y": 180,    "z": 0   },   "Duration": 9,   "Delay": 0,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 7,    "z": 0   },   "StartRot": {    "x": 90,    "y": 180,    "z": 0   },   "EndPos": {    "x": -5,    "y": 4,    "z": 5   },   "EndRot": {    "x": 15,    "y": 135,    "z": 0   },   "Duration": 2,   "Delay": 5,   "EaseTransition": true  },
+ {   "StartPos": {    "x": -5,    "y": 4,    "z": 5   },   "StartRot": {    "x": 15,    "y": 135,    "z": 0   },   "EndPos": {    "x": 5,    "y": 4,    "z": 3   },   "EndRot": {    "x": 15,    "y": 235,    "z": 0   },   "Duration": 2,   "Delay": 12,   "EaseTransition": true  },
+ {   "StartPos": {    "x": 5,    "y": 4,    "z": 3   },   "StartRot": {    "x": 15,    "y": 235,    "z": 0   },   "EndPos": {    "x": 0,    "y": 4,    "z": 7   },   "EndRot": {    "x": 15,    "y": 180,    "z": 0   },   "Duration": 18,   "Delay": 3,   "EaseTransition": false  },
+ {   "StartPos": {    "x": 0,    "y": 4,    "z": 7   },   "StartRot": {    "x": 15,    "y": 180,    "z": 0   },   "EndPos": {    "x": 0,    "y": 4,    "z": 20   },   "EndRot": {    "x": 15,    "y": 180,    "z": 0   },   "Duration": 35,   "Delay": 0,   "EaseTransition": false  },
+ ] }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
