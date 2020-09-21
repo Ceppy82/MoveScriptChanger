@@ -112,14 +112,27 @@
     <Compile Include="Configuration\PluginConfig.cs" />
     <Compile Include="MoveScriptChangerController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="System\IO\EnumerationOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="BuildTargets.targets" />
     <None Include=".gitignore" />
+    <EmbeddedResource Include="Resources\changedByMSC.json" />
+    <EmbeddedResource Include="Resources\Lindsey Stirling - Crystallize keyForMSC 9336.json" />
+    <EmbeddedResource Include="Resources\MoveScript1.json" />
+    <EmbeddedResource Include="Resources\MoveScript2.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

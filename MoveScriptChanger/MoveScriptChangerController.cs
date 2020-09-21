@@ -20,15 +20,17 @@ namespace MoveScriptChanger
     /// </summary>
     public class MoveScriptChangerController : MonoBehaviour
     {
+        //Beginn initiating variables for MSC
         private string mapKey = "key not provided";
-        private string mapHash = "mapID not provided";
-        private string newMapHash = "mapID not provided";
+        private string mapHash = "mapHash not provided";
+        private string newMapHash = "mapHash not provided";
         private string moveScriptChangerPath = Directory.GetCurrentDirectory() + @"\UserData\MoveScriptChanger";
         private int poolSize;
         private int oldPickedScript;
         private int pickedMoveScript;
         private string pickedMoveScriptName;
-
+        //End initiating Variables for MSC
+        
         public static MoveScriptChangerController Instance { get; private set; }
        
         #region Monobehaviour Messages
@@ -48,59 +50,33 @@ namespace MoveScriptChanger
             GameObject.DontDestroyOnLoad(this); // Don't destroy this object on scene changes
             Instance = this;
             Logger.log?.Debug($"{name}: Awake()");
+
+            //Begin MSC checking folders and files
+            if (!Directory.Exists(moveScriptChangerPath) | !File.Exists(moveScriptChangerPath + @"\Pool\Random\*.json"))
+            {
+                CreateMoveScriptChangerFiles();
+            }
+            //End MSC checking folders and files
+                        
+            ScanMoveScriptPool(); //MSC scan Pool
+                        
+            BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribing
+            BS_Utils.Utilities.BSEvents.levelSelected += LevelSelected; //subscribing
         }
         /// <summary>
         /// Only ever called once on the first frame the script is Enabled. Start is called after any other script's Awake() and before Update().
         /// </summary>
+        /// 
+
         private void Start()
         {
-            CheckMoveScriptChangerFolder();
-
         }
-
-        private void ScanMoveScriptPool()
-        {
-                
-
-            
-
-            poolSize = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random", "*.json", SearchOption.AllDirectories).Length;
-           
-
-        }
-
-        private void RandomScript()
-        {
-
-            oldPickedScript = pickedMoveScript;
-
-            while (oldPickedScript == pickedMoveScript)
-            {
-                var random = new System.Random();
-                int randomnumber = random.Next(poolSize);
-                pickedMoveScript = randomnumber;
-            }
-
-
-
-            string[] filePaths = Directory.GetFiles((moveScriptChangerPath + @"\Pool\Random"));
-            //filePaths.ToList().ForEach(i => Console.WriteLine(i.ToString()));
-            pickedMoveScriptName = filePaths[pickedMoveScript];
-            System.IO.File.Copy(pickedMoveScriptName, moveScriptChangerPath + @"\changedByMSC.json", true);
-        }
-
-        private void NonRandomScript()
-        {
-            
-        }
-
 
         /// <summary>
         /// Called every frame if the script is enabled.
         /// </summary>
         private void Update()
         {
-
         }
 
         /// <summary>
@@ -108,8 +84,8 @@ namespace MoveScriptChanger
         /// </summary>
         private void LateUpdate()
         {
-            BS_Utils.Utilities.BSEvents.levelSelected += LevelSelected;
-            
+
+            //Begin MSC getting mapKey
             if (mapHash != newMapHash)
             {
                 if (SongDataCore.Plugin.Songs.IsDataAvailable() && SongDataCore.Plugin.Songs.Data.Songs.ContainsKey(newMapHash))
@@ -121,61 +97,17 @@ namespace MoveScriptChanger
                     mapKey = "notProvided";
                 }
                 mapHash = newMapHash;
-                SelectMoveScript();
-                
+                //End MSC getting mapKey
+
+                SelectMoveScript(); //MSC calling "choose between random or defined MoveScript"
             }
-
-
         }
-        
-        private void CreateMoveScriptChangerFolder()
-        {
-            
-            Directory.CreateDirectory(moveScriptChangerPath + @"\Pool\Random");
-            
-
-        }
-
-        private void CheckMoveScriptChangerFolder()
-
-        {
-            if(!Directory.Exists(moveScriptChangerPath))
-            {
-
-                CreateMoveScriptChangerFolder();
-            }
-            ScanMoveScriptPool();
-        }
-
-
-
-
-        private void SelectMoveScript()
-        {
-
-            RandomScript();
-
-
-        }
-        private void LevelSelected(LevelCollectionViewController arg1, IPreviewBeatmapLevel arg2)
-        {
-                        
-                if (newMapHash != arg2.levelID.Replace("custom_level_", "").ToLower())
-            
-            {
-                newMapHash = arg2.levelID.Replace("custom_level_", "").ToLower();
-            }
-
-        }
-
-        
 
         /// <summary>
         /// Called when the script becomes enabled and active
         /// </summary>
         private void OnEnable()
         {
-
         }
 
         /// <summary>
@@ -183,7 +115,7 @@ namespace MoveScriptChanger
         /// </summary>
         private void OnDisable()
         {
-
+            BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribe
         }
 
         /// <summary>
@@ -193,8 +125,80 @@ namespace MoveScriptChanger
         {
             Logger.log?.Debug($"{name}: OnDestroy()");
             Instance = null; // This MonoBehaviour is being destroyed, so set the static instance property to null.
-
+            BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribe
         }
+        private void LevelSelected(LevelCollectionViewController arg1, IPreviewBeatmapLevel arg2)
+        {
+            if (newMapHash != arg2.levelID.Replace("custom_level_", "").ToLower())
+            {
+                newMapHash = arg2.levelID.Replace("custom_level_", "").ToLower();
+            }
+        }
+
+        private void SelectMoveScript()
+        {
+            if (Directory.GetFiles(moveScriptChangerPath + @"\Pool", "*" + "keyForMSC*" + mapKey + "*.json", SearchOption.AllDirectories).Length > 0)
+            {
+                NonRandomScript();
+            }
+            else
+            {
+                RandomScript();
+            }
+        }
+
+        private void CreateMoveScriptChangerFiles()
+        {
+            Directory.CreateDirectory(moveScriptChangerPath + @"\Pool\Random");
+            File.WriteAllText(moveScriptChangerPath + @"\changedByMSC.json", Resource.changedByMSC);
+            File.WriteAllText(moveScriptChangerPath + @"\Pool\Lindsey_Stirling___Crystallize_keyForMSC_9336.json", Resource.Lindsey_Stirling___Crystallize_keyForMSC_9336);
+            File.WriteAllText(moveScriptChangerPath + @"\Pool\Random\MoveScript1.json", Resource.MoveScript1);
+            File.WriteAllText(moveScriptChangerPath + @"\Pool\Random\MoveScript2.json", Resource.MoveScript2);
+        }
+
+        private void ScanMoveScriptPool()
+        {
+            poolSize = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random", "*.json", SearchOption.AllDirectories).Length;
+            if (poolSize == 0) CreateMoveScriptChangerFiles(); //MSC if no MoveScript found, create some
+        }
+       
+        private void RandomScript()
+        {
+            oldPickedScript = pickedMoveScript;
+            while (oldPickedScript == pickedMoveScript) //MSC repeat till another MoveScript is selected
+            {
+                var random = new System.Random();
+                int randomnumber = random.Next(poolSize - 1);
+                pickedMoveScript = randomnumber;
+            }
+            if (pickedMoveScript >= 0 & pickedMoveScript < poolSize) //MSC change MoveScript only if MoveScripts available
+            {
+                string[] filePaths = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random");
+                pickedMoveScriptName = filePaths[pickedMoveScript];
+                File.Copy(pickedMoveScriptName, moveScriptChangerPath + @"\changedByMSC.json", true);
+            }
+        }
+    
+        private void NonRandomScript()
+        {
+            string[] filePath = Directory.GetFiles(moveScriptChangerPath + @"\Pool", "*" + "keyForMSC*" + mapKey + "*.json", SearchOption.AllDirectories);
+            int poolSize = filePath.Length;
+            if (poolSize > 1)
+            {
+                //MSC more than 1 MoveScripts available for this map
+                var random = new System.Random();
+                int randomnumber = random.Next(poolSize);
+                File.Copy(filePath[randomnumber], moveScriptChangerPath + @"\changedByMSC.json", true);
+            }
+            else
+            {
+                //MSC only 1 MoveScript available for this map
+                File.Copy(filePath[0], moveScriptChangerPath + @"\changedByMSC.json", true);
+            }
+        }
+
         #endregion
     }
+
+
 }
