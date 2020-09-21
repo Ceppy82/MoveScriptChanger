@@ -7,11 +7,11 @@
 ## Install:
 
 
-get lastest Release
+-get lastest Release
 
-unzip into Beat Saber directory
+-unzip into Beat Saber directory
 
-run Beat Saber once, to get the folders and some example scripts created
+-run Beat Saber once, to get the folders and some example scripts created
 	(*\Beat Saber\UserData\MoveScriptChanger
 
 
