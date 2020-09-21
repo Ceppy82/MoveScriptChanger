@@ -11,7 +11,7 @@ Install:
 Usage!
 
 
-        random use
+	random use
 
                 put the "*.json" in
                 "*\++adapt to your Beat Saber install directory++\UserData\MoveScriptChanger\Pool\Random"
