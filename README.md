@@ -73,7 +73,7 @@ If you now select a map ingame, a MoveScript is automatically copied from the po
 
 **if you need help creating a MoveScript:**
 
-[CameraPlusScriptMaker](https://github.com/Ceppy82/MoveScriptChanger/blob/master/CameraPlusScriptMaker%20RC2.ods)	
+[CameraPlusScriptMaker](https://github.com/Ceppy82/MoveScriptChanger/raw/master/CameraPlusScriptMaker%20RC2.ods)	
 
 [How I use the ScriptMaker](https://youtu.be/PIoim8pPWLU)
 
