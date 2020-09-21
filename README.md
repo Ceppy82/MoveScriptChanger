@@ -54,3 +54,6 @@ edit your cameraplus.cfg:
 
 
 done! :)	
+
+If you now select a map ingame, a MoveScript is automatically copied from the pool to
+	"++adapt to your Beat Saber install directory++\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or determined.
