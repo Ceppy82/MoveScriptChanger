@@ -24,7 +24,7 @@
 ### random use
 
 put the "*.json" in
-"*\**++adapt to your Beat Saber install directory**++\UserData\MoveScriptChanger\Pool\Random"
+"*\ **++adapt to your Beat Saber install directory**++\UserData\MoveScriptChanger\Pool\Random"
 
 
 ### random use BUT also for certain maps
