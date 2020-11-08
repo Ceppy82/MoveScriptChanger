@@ -85,22 +85,7 @@ namespace MoveScriptChanger
         private void LateUpdate()
         {
 
-            //Begin MSC getting mapKey
-            if (mapHash != newMapHash)
-            {
-                if (SongDataCore.Plugin.Songs.IsDataAvailable() && SongDataCore.Plugin.Songs.Data.Songs.ContainsKey(newMapHash))
-                {
-                    mapKey = SongDataCore.Plugin.Songs.Data.Songs[newMapHash].key;
-                }
-                else
-                {
-                    mapKey = "notProvided";
-                }
-                mapHash = newMapHash;
-                //End MSC getting mapKey
 
-                SelectMoveScript(); //MSC calling "choose between random or defined MoveScript"
-            }
         }
 
         /// <summary>
@@ -133,6 +118,24 @@ namespace MoveScriptChanger
             {
                 newMapHash = arg2.levelID.Replace("custom_level_", "").ToLower();
             }
+
+            if (mapHash != newMapHash)
+            {
+                if (SongDataCore.Plugin.Songs.IsDataAvailable() && SongDataCore.Plugin.Songs.Data.Songs.ContainsKey(newMapHash))
+                {
+                    mapKey = SongDataCore.Plugin.Songs.Data.Songs[newMapHash].key;
+                }
+                else
+                {
+                    mapKey = "notProvided";
+                }
+                mapHash = newMapHash;
+
+                SelectMoveScript(); //MSC calling "choose between random or defined MoveScript"
+            }
+
+
+
         }
 
         private void SelectMoveScript()
