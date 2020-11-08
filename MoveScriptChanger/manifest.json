@@ -5,7 +5,7 @@
   "author": "Ceppy",
   "version": "1.1.0",
   "description": "",
-  "gameVersion": "1.11.1",
+  "gameVersion": "1.12.2",
   "dependsOn": {
     "BS Utils": "^1.4.11",
     "SongCore": "^2.9.10"
