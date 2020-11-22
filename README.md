@@ -68,7 +68,7 @@ movementScriptPath="**++Beat Saber install dir++**\UserData\MoveScriptChanger\ch
 done! :)	
 
 If you now select a map ingame, a MoveScript is automatically copied from the pool to
-	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or determined.
+	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or assigned.
 
 
 **if you need help creating a MoveScript:**
