@@ -12,7 +12,7 @@
 -unzip into Beat Saber directory
 
 -run Beat Saber once, to get the folders and some example scripts created
-	(*\Beat Saber\UserData\MoveScriptChanger)
+	(**++Beat Saber install dir**++\UserData\MoveScriptChanger)
 
 
 
@@ -24,7 +24,7 @@
 ### random use
 
 put your movescript (.json) in
-"*\ **++Beat Saber install dir**++\UserData\MoveScriptChanger\Pool\Random"
+"**++Beat Saber install dir**++\UserData\MoveScriptChanger\Pool\Random"
 
 
 ### random use BUT also for certain maps
