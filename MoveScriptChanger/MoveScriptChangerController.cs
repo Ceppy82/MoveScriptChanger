@@ -49,7 +49,6 @@ namespace MoveScriptChanger
             }
             GameObject.DontDestroyOnLoad(this); // Don't destroy this object on scene changes
             Instance = this;
-            Logger.log?.Debug($"{name}: Awake()");
 
             //Begin MSC checking folders and files
             if (!Directory.Exists(moveScriptChangerPath) | !File.Exists(moveScriptChangerPath + @"\Pool\Random\*.json"))
@@ -147,6 +146,7 @@ namespace MoveScriptChanger
             else
             {
                 RandomScript();
+
             }
         }
 
@@ -168,12 +168,24 @@ namespace MoveScriptChanger
         private void RandomScript()
         {
             oldPickedScript = pickedMoveScript;
-            while (oldPickedScript == pickedMoveScript) //MSC repeat till another MoveScript is selected
+            if (poolSize > 2)
             {
-                var random = new System.Random();
-                int randomnumber = random.Next(poolSize - 1);
-                pickedMoveScript = randomnumber;
+                while (oldPickedScript == pickedMoveScript) //MSC repeat till another MoveScript is selected
+                {
+                    var random = new System.Random();
+                    int randomnumber = random.Next(poolSize - 1);
+                    pickedMoveScript = randomnumber;
+                }
             }
+            else if(poolSize == 2 && oldPickedScript == 0)
+            {
+                pickedMoveScript = 1;                
+            }
+            else
+            {
+                pickedMoveScript = 0;
+            }
+
             if (pickedMoveScript >= 0 & pickedMoveScript < poolSize) //MSC change MoveScript only if MoveScripts available
             {
                 string[] filePaths = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random");
