@@ -1,5 +1,7 @@
 ![MoveScriptChanger](https://github.com/Ceppy82/MoveScriptChanger/blob/master/MSC.png?raw=true)
-Logo/Banner made by [Huuko](https://youtu.be/gxonZ3YOQv4)
+Background by [Pixelguy](https://twitter.com/pixelguymm)
+Logo/Banner by [Huuko](https://youtu.be/gxonZ3YOQv4)
+
 
 # MoveScriptChanger
 
