@@ -22,7 +22,15 @@ Logo/Banner by [Huuko](https://youtu.be/gxonZ3YOQv4)
 	(**++Beat Saber install dir**++\UserData\MoveScriptChanger)
 
 
+### edit your cameraplus.cfg:
 
+movementScriptPath="**++Beat Saber install dir++**\UserData\MoveScriptChanger\changedByMSC.json"
+
+
+done! :)	
+
+If you now select a map ingame, a MoveScript is automatically copied from the pool to
+	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or predetermined.
 
 
 ## Usage!
@@ -64,19 +72,6 @@ something key ForMSC something 1a2b something.json
 
 something key ForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)
 		
-	
-	
-### edit your cameraplus.cfg:
-
-movementScriptPath="**++Beat Saber install dir++**\UserData\MoveScriptChanger\changedByMSC.json"
-
-
-
-done! :)	
-
-If you now select a map ingame, a MoveScript is automatically copied from the pool to
-	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or predetermined.
-
 
 **if you need help creating a MoveScript:**
 
