@@ -44,33 +44,33 @@ put your movescript (.json) in
 
 ### random use BUT also for certain maps
 	
-add "key ForMSC" somewhere, and the key of the map between "key ForMSC" and ".json" in your filename.
+add "keyForMSC" somewhere, and the key of the map between "keyForMSC" and ".json" in your filename.
 
 put the "*.json" in
 
 "**++Beat Saber install dir++**\UserData\MoveScriptChanger\Pool\Random"
 		
 #### Examples:
-somethingsomething key ForMSC 1a2b.json	
+somethingsomething keyForMSC 1a2b.json	
 
-something key ForMSC something 1a2b something.json	
+something keyForMSC something 1a2b something.json	
 
-something key ForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)	
+something keyForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)	
 
 
 	
 ### ONLY for certain maps
 	
-add "key ForMSC" somewhere, and the key of the map between "key ForMSC" and ".json" in your filename.	
+add "keyForMSC" somewhere, and the key of the map between "keyForMSC" and ".json" in your filename.	
 put the "*.json" in	
 "**++Beat Saber install dir++**\UserData\MoveScriptChanger\Pool"	
 		
 #### Examples:
-somethingsomething key ForMSC 1a2b.json		
+somethingsomething keyForMSC 1a2b.json		
 
-something key ForMSC something 1a2b something.json	
+something keyForMSC something 1a2b something.json	
 
-something key ForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)
+something keyForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)
 		
 
 **if you need help creating a MoveScript:**
