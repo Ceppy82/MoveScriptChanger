@@ -79,3 +79,4 @@ something keyForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)
 
 [How I use the ScriptMaker](https://youtu.be/PIoim8pPWLU)
 
+[Discord](https://discord.gg/VSDRMAU7X9)
