@@ -1,5 +1,9 @@
 ![MoveScriptChanger](https://github.com/Ceppy82/MoveScriptChanger/blob/master/MSC.png?raw=true)
-Logo/Banner made by [Huuko](https://youtu.be/gxonZ3YOQv4)
+
+Background by [Pixelguy](https://twitter.com/pixelguymm)
+
+Logo/Banner by [Huuko](https://youtu.be/gxonZ3YOQv4)
+
 
 # MoveScriptChanger
 
@@ -18,7 +22,15 @@ Logo/Banner made by [Huuko](https://youtu.be/gxonZ3YOQv4)
 	(**++Beat Saber install dir**++\UserData\MoveScriptChanger)
 
 
+### edit your cameraplus.cfg:
 
+movementScriptPath="**++Beat Saber install dir++**\UserData\MoveScriptChanger\changedByMSC.json"
+
+
+done! :)	
+
+If you now select a map ingame, a MoveScript is automatically copied from the pool to
+	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or predetermined.
 
 
 ## Usage!
@@ -32,47 +44,34 @@ put your movescript (.json) in
 
 ### random use BUT also for certain maps
 	
-add "key ForMSC" somewhere, and the key of the map between "key ForMSC" and ".json" in your filename.
+add "keyForMSC" somewhere, and the key of the map between "keyForMSC" and ".json" in your filename.
 
 put the "*.json" in
 
 "**++Beat Saber install dir++**\UserData\MoveScriptChanger\Pool\Random"
 		
 #### Examples:
-somethingsomething key ForMSC 1a2b.json	
+somethingsomething keyForMSC 1a2b.json	
 
-something key ForMSC something 1a2b something.json	
+something keyForMSC something 1a2b something.json	
 
-something key ForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)	
+something keyForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)	
 
 
 	
 ### ONLY for certain maps
 	
-add "key ForMSC" somewhere, and the key of the map between "key ForMSC" and ".json" in your filename.	
+add "keyForMSC" somewhere, and the key of the map between "keyForMSC" and ".json" in your filename.	
 put the "*.json" in	
 "**++Beat Saber install dir++**\UserData\MoveScriptChanger\Pool"	
 		
 #### Examples:
-somethingsomething key ForMSC 1a2b.json		
+somethingsomething keyForMSC 1a2b.json		
 
-something key ForMSC something 1a2b something.json	
+something keyForMSC something 1a2b something.json	
 
-something key ForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)
+something keyForMSC 1a2b 3c4d 5e6f.json (for more then one certain maps)
 		
-	
-	
-### edit your cameraplus.cfg:
-
-movementScriptPath="**++Beat Saber install dir++**\UserData\MoveScriptChanger\changedByMSC.json"
-
-
-
-done! :)	
-
-If you now select a map ingame, a MoveScript is automatically copied from the pool to
-	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or predetermined.
-
 
 **if you need help creating a MoveScript:**
 
@@ -80,3 +79,4 @@ If you now select a map ingame, a MoveScript is automatically copied from the po
 
 [How I use the ScriptMaker](https://youtu.be/PIoim8pPWLU)
 
+[Discord](https://discord.gg/VSDRMAU7X9)
