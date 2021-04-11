@@ -153,6 +153,8 @@ namespace MoveScriptChanger
         private void CreateMoveScriptChangerFiles()
         {
             Directory.CreateDirectory(moveScriptChangerPath + @"\Pool\Random");
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts");
+            File.WriteAllText(Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", Resource.changedByMSC);
             File.WriteAllText(moveScriptChangerPath + @"\changedByMSC.json", Resource.changedByMSC);
             File.WriteAllText(moveScriptChangerPath + @"\Pool\Lindsey_Stirling___Crystallize_keyForMSC_9336.json", Resource.Lindsey_Stirling___Crystallize_keyForMSC_9336);
             File.WriteAllText(moveScriptChangerPath + @"\Pool\Random\MoveScript1.json", Resource.MoveScript1);
@@ -191,6 +193,8 @@ namespace MoveScriptChanger
                 string[] filePaths = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random");
                 pickedMoveScriptName = filePaths[pickedMoveScript];
                 File.Copy(pickedMoveScriptName, moveScriptChangerPath + @"\changedByMSC.json", true);
+                File.Copy(pickedMoveScriptName, Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", true);
+                
             }
         }
     
@@ -209,6 +213,7 @@ namespace MoveScriptChanger
             {
                 //MSC only 1 MoveScript available for this map
                 File.Copy(filePath[0], moveScriptChangerPath + @"\changedByMSC.json", true);
+                File.Copy(filePath[0], Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", true);
             }
         }
 
