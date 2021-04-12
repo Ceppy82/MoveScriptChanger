@@ -10,7 +10,7 @@ using BS_Utils.Gameplay;
 using SongDataCore.BeatStar;
 using System.Data;
 using System.IO;
-
+using Camera2;
 
 namespace MoveScriptChanger
 {
@@ -193,8 +193,7 @@ namespace MoveScriptChanger
                 string[] filePaths = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random");
                 pickedMoveScriptName = filePaths[pickedMoveScript];
                 File.Copy(pickedMoveScriptName, moveScriptChangerPath + @"\changedByMSC.json", true);
-                File.Copy(pickedMoveScriptName, Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", true);
-                
+                camera
             }
         }
     
