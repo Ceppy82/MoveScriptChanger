@@ -21,13 +21,20 @@ Logo/Banner by [Huuko](https://youtu.be/gxonZ3YOQv4)
 -run Beat Saber once, to get the folders and some example scripts created
 	(**++Beat Saber install dir**++\UserData\MoveScriptChanger)
 
-
-### edit your cameraplus.cfg:
+#### CameraPlus:
+##### edit your cameraplus.cfg:
 
 movementScriptPath="**++Beat Saber install dir++**\UserData\MoveScriptChanger\changedByMSC.json"
 
 
+#### Camera2:
+##### open the camera.json with which you want to use the Movescript
+-add "changedByMSC" in the Scriptlist
+
 done! :)	
+
+
+
 
 If you now select a map ingame, a MoveScript is automatically copied from the pool to
 	"**++Beat Saber install dir++**\UserData\ MoveScriptChanger\changedByMSC.json", either randomly or predetermined.
