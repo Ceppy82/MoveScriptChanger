@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using UnityEngine;
-using IPA.Logging;
-using BS_Utils.Gameplay;
-using SongDataCore.BeatStar;
-using System.Data;
+//using IPA.Logging;
+using IPA.Loader;
+//using IPA.Utilities;
+//using BS_Utils.Gameplay;
+//using SongDataCore.BeatStar;
+//using System.Data;
 using System.IO;
+using HarmonyLib;
 
 
 namespace MoveScriptChanger
@@ -28,7 +31,10 @@ namespace MoveScriptChanger
         private int poolSize;
         private int oldPickedScript;
         private int pickedMoveScript;
-        private string pickedMoveScriptName;
+        private bool cam2;
+        private string cam2File = Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts\changedByMSC.json";
+        private string newMoveScript;
+
         //End initiating Variables for MSC
         
         public static MoveScriptChangerController Instance { get; private set; }
@@ -50,17 +56,33 @@ namespace MoveScriptChanger
             GameObject.DontDestroyOnLoad(this); // Don't destroy this object on scene changes
             Instance = this;
 
+            var cam2check = PluginManager.GetPlugin("Camera2");
+            if (cam2check != null)
+            {
+                cam2 = true;
+            }
+            else
+            {
+                cam2 = false;
+            }
+
+
             //Begin MSC checking folders and files
-            if (!Directory.Exists(moveScriptChangerPath) | !File.Exists(moveScriptChangerPath + @"\Pool\Random\*.json"))
+            if (!Directory.Exists(moveScriptChangerPath))
             {
                 CreateMoveScriptChangerFiles();
             }
             //End MSC checking folders and files
                         
             ScanMoveScriptPool(); //MSC scan Pool
-                        
+       
+
             BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribing
             BS_Utils.Utilities.BSEvents.levelSelected += LevelSelected; //subscribing
+
+            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= ChangeMovescript;
+            BS_Utils.Utilities.BSEvents.gameSceneLoaded += ChangeMovescript;
+
         }
         /// <summary>
         /// Only ever called once on the first frame the script is Enabled. Start is called after any other script's Awake() and before Update().
@@ -100,6 +122,7 @@ namespace MoveScriptChanger
         private void OnDisable()
         {
             BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribe
+            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= ChangeMovescript;
         }
 
         /// <summary>
@@ -110,7 +133,24 @@ namespace MoveScriptChanger
             Logger.log?.Debug($"{name}: OnDestroy()");
             Instance = null; // This MonoBehaviour is being destroyed, so set the static instance property to null.
             BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribe
+            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= ChangeMovescript;
         }
+        private void ChangeMovescript()
+        {
+            Logger.log?.Debug($"{name}: ChangeMovescript");
+            if (cam2)
+            {
+                File.Copy(newMoveScript, Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts\changedByMSC.json", true);
+                if (File.Exists(cam2File + ".cameraPlusFormat")) File.Delete(cam2File + ".cameraPlusFormat");
+                AccessTools.TypeByName("Camera2.Managers.MovementScriptManager")?.GetMethod("LoadMovementScripts").Invoke(null, new object[] { true });
+            }
+            else
+            {
+                File.Copy(newMoveScript, moveScriptChangerPath + @"\changedByMSC.json", true);
+            }
+        }
+
+
         private void LevelSelected(LevelCollectionViewController arg1, IPreviewBeatmapLevel arg2)
         {
             if (newMapHash != arg2.levelID.Replace("custom_level_", "").ToLower())
@@ -153,9 +193,8 @@ namespace MoveScriptChanger
         private void CreateMoveScriptChangerFiles()
         {
             Directory.CreateDirectory(moveScriptChangerPath + @"\Pool\Random");
-            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts");
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", Resource.changedByMSC);
             File.WriteAllText(moveScriptChangerPath + @"\changedByMSC.json", Resource.changedByMSC);
+            if (cam2) File.WriteAllText(Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", Resource.changedByMSC);
             File.WriteAllText(moveScriptChangerPath + @"\Pool\Lindsey_Stirling___Crystallize_keyForMSC_9336.json", Resource.Lindsey_Stirling___Crystallize_keyForMSC_9336);
             File.WriteAllText(moveScriptChangerPath + @"\Pool\Random\MoveScript1.json", Resource.MoveScript1);
             File.WriteAllText(moveScriptChangerPath + @"\Pool\Random\MoveScript2.json", Resource.MoveScript2);
@@ -167,7 +206,7 @@ namespace MoveScriptChanger
             if (poolSize == 0) CreateMoveScriptChangerFiles(); //MSC if no MoveScript found, create some
         }
        
-        private void RandomScript()
+        public void RandomScript()
         {
             oldPickedScript = pickedMoveScript;
             if (poolSize > 2)
@@ -190,15 +229,13 @@ namespace MoveScriptChanger
 
             if (pickedMoveScript >= 0 & pickedMoveScript < poolSize) //MSC change MoveScript only if MoveScripts available
             {
-                string[] filePaths = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random");
-                pickedMoveScriptName = filePaths[pickedMoveScript];
-                File.Copy(pickedMoveScriptName, moveScriptChangerPath + @"\changedByMSC.json", true);
-                File.Copy(pickedMoveScriptName, Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", true);
                 
+                string[] filePaths = Directory.GetFiles(moveScriptChangerPath + @"\Pool\Random");
+                newMoveScript = filePaths[pickedMoveScript];
             }
         }
     
-        private void NonRandomScript()
+        public void NonRandomScript()
         {
             string[] filePath = Directory.GetFiles(moveScriptChangerPath + @"\Pool", "*" + "keyForMSC*" + mapKey + "*.json", SearchOption.AllDirectories);
             int poolSize = filePath.Length;
@@ -207,13 +244,13 @@ namespace MoveScriptChanger
                 //MSC more than 1 MoveScripts available for this map
                 var random = new System.Random();
                 int randomnumber = random.Next(poolSize);
-                File.Copy(filePath[randomnumber], moveScriptChangerPath + @"\changedByMSC.json", true);
+                newMoveScript = filePath[randomnumber];
+
             }
             else
             {
                 //MSC only 1 MoveScript available for this map
-                File.Copy(filePath[0], moveScriptChangerPath + @"\changedByMSC.json", true);
-                File.Copy(filePath[0], Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts" + @"\changedByMSC.json", true);
+                newMoveScript = filePath[0];
             }
         }
 
@@ -222,3 +259,4 @@ namespace MoveScriptChanger
 
 
 }
+
