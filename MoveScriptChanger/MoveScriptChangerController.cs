@@ -77,11 +77,8 @@ namespace MoveScriptChanger
             ScanMoveScriptPool(); //MSC scan Pool
        
 
-            BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribing
-            BS_Utils.Utilities.BSEvents.levelSelected += LevelSelected; //subscribing
-
-            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= ChangeMovescript;
-            BS_Utils.Utilities.BSEvents.gameSceneLoaded += ChangeMovescript;
+            BS_Utils.Utilities.BSEvents.gameSceneActive -= ChangeMovescript;
+            BS_Utils.Utilities.BSEvents.gameSceneActive += ChangeMovescript;
 
         }
         /// <summary>
@@ -121,8 +118,7 @@ namespace MoveScriptChanger
         /// </summary>
         private void OnDisable()
         {
-            BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribe
-            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= ChangeMovescript;
+            BS_Utils.Utilities.BSEvents.gameSceneActive -= ChangeMovescript;
         }
 
         /// <summary>
@@ -132,12 +128,14 @@ namespace MoveScriptChanger
         {
             Logger.log?.Debug($"{name}: OnDestroy()");
             Instance = null; // This MonoBehaviour is being destroyed, so set the static instance property to null.
-            BS_Utils.Utilities.BSEvents.levelSelected -= LevelSelected; //unsubscribe
-            BS_Utils.Utilities.BSEvents.gameSceneLoaded -= ChangeMovescript;
+            BS_Utils.Utilities.BSEvents.gameSceneActive -= ChangeMovescript;
         }
         private void ChangeMovescript()
         {
             Logger.log?.Debug($"{name}: ChangeMovescript");
+
+            LevelSelected();
+
             if (cam2)
             {
                 File.Copy(newMoveScript, Directory.GetCurrentDirectory() + @"\UserData\Camera2\MovementScripts\changedByMSC.json", true);
@@ -151,11 +149,12 @@ namespace MoveScriptChanger
         }
 
 
-        private void LevelSelected(LevelCollectionViewController arg1, IPreviewBeatmapLevel arg2)
+        private void LevelSelected()
         {
-            if (newMapHash != arg2.levelID.Replace("custom_level_", "").ToLower())
+            string levelID = BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData.difficultyBeatmap.level.levelID;
+            if (newMapHash != levelID.Replace("custom_level_", "").ToLower())
             {
-                newMapHash = arg2.levelID.Replace("custom_level_", "").ToLower();
+                newMapHash = levelID.Replace("custom_level_", "").ToLower();
             }
 
             if (mapHash != newMapHash)
